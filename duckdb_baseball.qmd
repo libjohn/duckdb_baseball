@@ -1,0 +1,23 @@
+---
+title: "duckdb_baseball"
+---
+
+```{r}
+library(Lahman)
+library(tidyverse)
+```
+
+```{r}
+batting <- copy_to(con, Lahman::Batting)
+batting
+```
+
+```{r}
+batting %>% show_query()
+batting %>% explain()
+```
+
+```{r}
+batting |> 
+  count(teamID, sort = TRUE)
+```
